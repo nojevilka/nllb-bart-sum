@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %} - FlaskApp</title>
+    <script>
+        (checkProgress = function () {
+            fetch('http://localhost:5100/progress', { method: 'GET' })
+            .then(response => response.text())
+            .then(progressString => {
+                // console.log(document.getElementById('progress').innerHTML);
+                let tuple = progressString.split(",")
+                // console.log(tuple);
+                let action = tuple[0];
+                let i = tuple[1];
+                let n = tuple[2];
+
+                document.getElementById('action').innerHTML = action;
+                if (n == 0 || action == "translating back...") {
+                    // console.log("a");
+                    document.getElementById('progress').style.display = 'none';
+                } else {
+                    let progress = i/n;
+                    // console.log("b");
+                    // console.log("pr: ", progress);
+                    document.getElementById('progress').style.display = 'inline';
+                    document.getElementById('progress').value = progress;
+                    // document.getElementById('progress').innerHTML = action;
+                }
+                setTimeout(checkProgress, 300);
+            })
+        })();
+    </script>
+    <style>
+        .message {
+            padding: 10px;
+            margin: 5px;
+            background-color: #f3f3f3
+        }
+        nav a {
+            color: #d64161;
+            font-size: 3em;
+            margin-left: 50px;
+            text-decoration: none;
+        }
+
+        .alert {
+            padding: 20px;
+            margin: 5px;
+            color: #970020;
+            background-color: #ffd5de;
+        }
+        .row {
+            display: flex;
+        }
+
+        .column {
+            flex: 50%;
+            padding: 10px;
+        }
+
+
+        textarea
+        {
+            width:100%;
+            padding: 0px 0px 0px 0px;
+        }
+        .textwrapper
+        {
+            /* border:1px solid #999999; */
+            /* margin:5px 0; */
+            /* padding:3px; */
+        }
+        .verticalSpacer {
+            width: 50px;
+        }
+
+        .boxsizingBorder {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+                    box-sizing: border-box;
+        }
+
+        .content {
+            padding: 100px;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- <nav>
+        <a href="{{ url_for('index') }}">FlaskApp</a>
+    </nav> -->
+    <!-- <hr> -->
+    <div class="content">
+        {% block content %} {% endblock %}
+    </div>
+</body>
+</html>

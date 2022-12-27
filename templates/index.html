@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form method="post">
+        <div class="textwrapper">
+        <textarea name="content"
+                  placeholder="Text to summarize"
+                  cols="2"
+                  rows="6"
+                  >{{ request.form['content'] }}</textarea>
+        </div>
+        <br>
+        <button type="submit">Summarize</button>
+        <progress id="progress" style="display: inline" value="0" max="1"></progress>
+        <text id="action" style="display: inline"></text>
+    </form>
+
+    <!-- <h1>{% block title2 %} Messages {% endblock %}</h1> -->
+
+
+    {% for message in messages %}
+
+        <div class="row">
+            <div class="column" style="background-color:#fff;">
+                <h2>{{ message['translated_title'] }}</h2>
+                <p>{{ message['orig_content'] }}</p>
+            </div>
+            <div class="verticalSpacer"></div>
+            <div class="column" style="background-color:#fff;">
+                <h2>{{ message['title'] }}</h2>
+                <p>{{ message['content'] }}</p>
+            </div>
+        </div>
+
+        <!-- <div class='message'>
+            <h3>{{ message['translated_title'] }}</h3>
+            <h3>{{ message['title'] }}</h3>
+            <p>{{ message['content'] }}</p>
+        </div> -->
+    {% endfor %}
+{% endblock %}
