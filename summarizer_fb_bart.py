@@ -10,8 +10,8 @@ class Summarizer:
         self.tokenizer = BartTokenizer.from_pretrained(self.model_name)
 
         self.model = AutoModelForSeq2SeqLM.from_pretrained(self.model_name)
-        # self.model.load_state_dict(torch.load('./results_backup/checkpoint-900/pytorch_model.bin'))
-        # self.model.eval()
+        self.model.load_state_dict(torch.load('./results_backup/checkpoint-900/pytorch_model.bin'))
+        self.model.eval()
 
 
     def summarize(self, text):
