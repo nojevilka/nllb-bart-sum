@@ -16,6 +16,6 @@ bash run_back_translator.sh (bash stop_back_translator.sh)
 bash run_back_translators.sh 1 (bash stop_back_translators.sh)
 ```
 
-### Модели из видео
+### Модель из видео
 
 `results_backup/checkpoint-900/pytorch_model.bin`
