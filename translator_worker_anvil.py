@@ -7,7 +7,7 @@ class Translator:
         anvil.server.connect("Y46UREHKLE2PE57C4DOZVMMU-ONM3O23ZU7X7RR6B-CLIENT")
 
     def translate(self, sentence):
-        print("!!!woll work on:", sentence)
+        print("!!!will work on:", sentence)
         return anvil.server.call('translate', sentence)
 
 translator = Translator()
