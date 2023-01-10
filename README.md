@@ -18,4 +18,5 @@ bash run_back_translators.sh 1 (bash stop_back_translators.sh)
 
 ### Модель из видео
 
-`results_backup/checkpoint-900/pytorch_model.bin`
+[Скачать](https://drive.google.com/drive/folders/1MC1UmqQcOX6hnhIWzky_8eWtx8rTGVxn?usp=share_link) и положить в `results_backup/checkpoint-900/pytorch_model.bin`
+(из-за лимита гитхаб удалил файл в git lfs)
